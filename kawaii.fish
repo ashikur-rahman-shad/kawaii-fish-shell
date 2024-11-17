@@ -1,6 +1,7 @@
 source "$kawaii_fish_dir/constant/character-codes.fish"
 source "$kawaii_fish_dir/config/prompt-folder-icon.fish"
 source "$kawaii_fish_dir/config/theme.fish"
+source "$kawaii_fish_dir/config/environment.fish"
 
 source "$kawaii_fish_dir/script/prompt/ps1-directory.fish"
 source "$kawaii_fish_dir/script/prompt/git-branch.fish"
