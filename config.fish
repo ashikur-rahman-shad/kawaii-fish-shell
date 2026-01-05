@@ -1,5 +1,5 @@
 set -g kawaii_fish_dir (realpath ~/.config/fish/kawaii-fish)
-source "$kawaii_fish_dir/kawaii.fish"
+source "$kawaii_fish_shell/kawaii.fish"
 
 set -x ANDROID_HOME ~/Android/Sdk
 

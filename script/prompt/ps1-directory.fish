@@ -35,6 +35,7 @@ end
 
 function prompt_dir
   set -l dir $(kawaii_Dir)
+  set -l dir "$USER/$dir"
   set -l dir_array (string split "/" $dir)
   set -l array_length (count $dir_array)
   set -l kawaii_prompt "$(fgColor $bgColors[$(math "(1 % $no_of_bg_colors)+1")])░▒▓"
