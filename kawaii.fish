@@ -12,5 +12,6 @@ source "$kawaii_fish_dir/function/prompt.fish"
 # source "$kawaii_fish_dir/welcome-message.fish"
 set -g fish_greeting ""
 
+# *for file colors
 # dircolors "$kawaii_fish_dir/config/plugins/dircolors"
-set -x LS_COLORS (dircolors -b "$kawaii_fish_dir/config/plugins/dircolors")
+# set -x LS_COLORS (dircolors -b "$kawaii_fish_dir/config/plugins/dircolors")
