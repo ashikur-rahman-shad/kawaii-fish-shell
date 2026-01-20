@@ -1,25 +1,36 @@
 function environment
-    set -l env ""
+    set -l env_info
     set -l env_fg $env_fg_color
 
-
     if test -n "$VIRTUAL_ENV"
-        set env "  "
-#         set env_fg "111,111,224"
-    else if test -n "$NODE_ENV"
-        set env "node"
-    else if test -n "$JAVA_HOME"
-        set env "java"
-    else if test -n "$RUBY_ENV"
-        set env "ruby"
+        set -l version (python --version 2>&1 | string split ' ')[2]
+        set -a env_info "🐍 $version"
+        # set -a env_info " $version"
     end
 
-    if test -n "$env"
+    if test -n "$NODE_ENV"
+        set -l version (node -v)
+        set -a env_info "🟢 $version"
+        # set -a env_info " $version"
+    end
+
+    if test -n "$JAVA_HOME"
+        set -l version (java -version 2>&1 | string match -r '[\d\.]+' | head -n 1)
+        set -a env_info "☕ $version"
+        # set -a env_info " $version"
+    end
+
+    if test -n "$RUBY_ENV"
+        set -l version (ruby -v | string split ' ')[2]
+        set -a env_info "💎 $version"
+        # set -a env_info " $version"
+    end
+
+    for env in $env_info
         set -l bgEnv (bgColor $env_bg_color)
         set -l fgEnv (fgColor $env_fg)
         set -l fgSymbol (fgColor $env_bg_color)
-        set -l term_icon " "
 
-        echo -e -n " $fgSymbol$LEFT_CIRCLE$fgEnv$bgEnv$env$RESET$fgSymbol$RIGHT_CIRCLE$RESET"
+        echo -e -n " $fgSymbol$LEFT_CIRCLE$fgEnv$bgEnv $env $RESET$fgSymbol$RIGHT_CIRCLE$RESET"
     end
 end
