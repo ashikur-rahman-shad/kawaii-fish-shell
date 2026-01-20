@@ -35,8 +35,8 @@ end
 
 function prompt_dir
   set -l dir $(kawaii_Dir)
-  # set -l dir "$USER/$dir"
-  set -l dir "/$dir"
+  set -l dir "$USER/$dir" #for showing user name
+  # set -l dir "/$dir" #for apple logo
 
   set -l dir_array (string split "/" $dir)
   set -l array_length (count $dir_array)
