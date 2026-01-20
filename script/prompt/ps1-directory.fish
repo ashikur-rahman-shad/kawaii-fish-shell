@@ -28,17 +28,22 @@ function lastFolderColor
     set -l fgThis $(fgColor $argv[3])
     set -l bgNext $(bgColor $argv[4])
     set -l symbol_color $(fgColor $argv[2])
-    echo -n "$fgThis$bgThis $text $RESET$symbol_color$TRIANGLE$RESET"
-#     echo -n "$fgThis$bgThis$text$RESET$symbol_color$RIGHT_CIRCLE$RESET"
+    # echo -n "$fgThis$bgThis $text $RESET$symbol_color$TRIANGLE$RESET"
+    echo -n "$fgThis$bgThis $text$RESET$symbol_color$RIGHT_CIRCLE$RESET"
 
 end
 
 function prompt_dir
   set -l dir $(kawaii_Dir)
-  set -l dir "$USER/$dir"
+  # set -l dir "$USER/$dir"
+  set -l dir "/$dir"
+
   set -l dir_array (string split "/" $dir)
   set -l array_length (count $dir_array)
-  set -l kawaii_prompt "$(fgColor $bgColors[$(math "(1 % $no_of_bg_colors)+1")])░▒▓"
+  # set -l kawaii_prompt "$(fgColor $bgColors[$(math "(1 % $no_of_bg_colors)+1")])░▒▓"
+  set -l kawaii_prompt "$(fgColor $bgColors[$(math "(1 % $no_of_bg_colors)+1")])$LEFT_CIRCLE"
+  # set -l kawaii_prompt ""
+
 
   for i in (seq 1 $(math $array_length-1))
     set kawaii_prompt $kawaii_prompt"$(
